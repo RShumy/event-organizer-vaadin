@@ -1,0 +1,72 @@
+html {
+    /* Base (background) */
+    --lumo-base-color: rgba(25, 25, 112, 0.95);
+
+    /* Tint */
+    --lumo-tint-5pct: hsla(0, 0%, 0%, 0.3);
+    --lumo-tint-10pct: hsla(0, 0%, 0%, 0.37);
+    --lumo-tint-20pct: hsla(0, 0%, 0%, 0.44);
+    --lumo-tint-30pct: hsla(0, 0%, 0%, 0.5);
+    --lumo-tint-40pct: hsla(0, 0%, 0%, 0.57);
+    --lumo-tint-50pct: hsla(0, 0%, 0%, 0.64);
+    --lumo-tint-60pct: hsla(0, 0%, 0%, 0.7);
+    --lumo-tint-70pct: hsla(0, 0%, 0%, 0.77);
+    --lumo-tint-80pct: hsla(0, 0%, 0%, 0.84);
+    --lumo-tint-90pct: hsla(0, 0%, 0%, 0.9);
+    --lumo-tint: #000;
+
+    /* Shade */
+    --lumo-shade-5pct: hsla(214, 39%, 75%, 0.05);
+    --lumo-shade-10pct: hsla(214, 43%, 76%, 0.1);
+    --lumo-shade-20pct: hsla(214, 47%, 77%, 0.2);
+    --lumo-shade-30pct: hsla(214, 50%, 78%, 0.3);
+    --lumo-shade-40pct: hsla(214, 53%, 79%, 0.4);
+    --lumo-shade-50pct: hsla(214, 55%, 80%, 0.5);
+    --lumo-shade-60pct: hsla(214, 57%, 81%, 0.6);
+    --lumo-shade-70pct: hsla(214, 58%, 82%, 0.7);
+    --lumo-shade-80pct: hsla(214, 59%, 83%, 0.8);
+    --lumo-shade-90pct: hsla(214, 60%, 84%, 0.9);
+    --lumo-shade: hsl(214, 65%, 85%);
+
+    /* Contrast */
+    --lumo-contrast-5pct: var(--lumo-shade-5pct);
+    --lumo-contrast-10pct: var(--lumo-shade-10pct);
+    --lumo-contrast-20pct: var(--lumo-shade-20pct);
+    --lumo-contrast-30pct: var(--lumo-shade-30pct);
+    --lumo-contrast-40pct: var(--lumo-shade-40pct);
+    --lumo-contrast-50pct: var(--lumo-shade-50pct);
+    --lumo-contrast-60pct: var(--lumo-shade-60pct);
+    --lumo-contrast-70pct: var(--lumo-shade-70pct);
+    --lumo-contrast-80pct: var(--lumo-shade-80pct);
+    --lumo-contrast-90pct: var(--lumo-shade-90pct);
+    --lumo-contrast: var(--lumo-shade);
+    --lumo-light: white;
+
+    /* Text */
+    --lumo-header-text-color: var(--lumo-light);
+    --lumo-body-text-color: var(--lumo-contrast);
+    --lumo-secondary-text-color: var(--lumo-contrast-80pct);
+    --lumo-tertiary-text-color: var(--lumo-contrast-70pct);
+    --lumo-disabled-text-color: var(--lumo-contrast-60pct);
+
+    /* Primary */
+    --lumo-primary-color: hsl(214, 100%, 48%);
+    --lumo-primary-color-50pct: hsla(214, 100%, 49%, 0.8);
+    --lumo-primary-color-10pct: hsla(214, 100%, 60%, 0.4);
+    --lumo-primary-text-color: hsl(214, 100%, 43%);
+    --lumo-primary-contrast-color: #fff;
+
+    /* Error */
+    --lumo-error-color: hsl(3, 85%, 48%);
+    --lumo-error-color-50pct: hsla(3, 85%, 61%, 0.8);
+    --lumo-error-color-10pct: hsla(3, 85%, 61%, 0.4);
+    --lumo-error-text-color: hsl(3, 89%, 55%);
+    --lumo-error-contrast-color: #fff;
+
+    /* Success */
+    --lumo-success-color: hsl(145, 72%, 30%);
+    --lumo-success-color-50pct: hsla(145, 72%, 51%, 0.8);
+    --lumo-success-color-10pct: hsla(145, 72%, 51%, 0.4);
+    --lumo-success-text-color: hsl(145, 85%, 45%);
+    --lumo-success-contrast-color: #fff;
+}
