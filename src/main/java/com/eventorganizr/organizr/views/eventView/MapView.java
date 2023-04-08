@@ -23,7 +23,7 @@ public class MapView extends VerticalLayout {
     };
 
     public void showMap(String locationQuery){
-        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0, GetMap)", locationQuery);
-//        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0)", locationQuery);
+//        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0, GetMap)", locationQuery);
+        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0)", locationQuery);
     }
 }

@@ -5,19 +5,21 @@
 // const APIkey: string = "The-Bing-Maps-APIkey";
 // export default APIkey;
 import APIkey from "./API-key.ts";
-
+import 'bingmaps';
 var map , searchManager;
 var mapsApiUrl = "https://www.bing.com/api/maps/mapcontrol?callback=GetMap";
 var locationString;
 
-window.GetMap = function getMap() {
+window.GetMap = async function getMap() {
     // setting this condition does not display the map
-    map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+
+    map = await new Microsoft.Maps.Map(document.getElementById('myMap'), {
         credentials : APIkey
     });
+    console.log(map);
     //Make a request to geocode New York, NY.
     console.log(locationString + '  --- PROPERTY NULL ??? ----');
-    geocodeQuery(locationString);
+    await geocodeQuery(locationString);
 }
 
 function geocodeQuery(query) {
@@ -53,26 +55,30 @@ function geocodeQuery(query) {
     }
 }
 
-window.ShowMap = function showMap(location
-    , callback
-){
+window.ShowMap = function showMap(location){
     var scripts = document.querySelectorAll(".map-per-request");
-    scripts.forEach(scrp => {if(scrp.parentElement!=null) scrp.parentElement.removeChild(scrp)});
+    if (scripts.length === 0){
+    // scripts.forEach(scrp => {if(scrp.parentElement!=null) scrp.parentElement.removeChild(scrp)});
+
+        var head = document.getElementsByTagName("head")[0];
+
+        locationString = location;
+        var script = document.createElement("script");
+        script.className = "map-per-request";
+        script.type = "text/javascript";
+        script.async = true;
+        script.defer = true;
+        script.src = mapsApiUrl;
+
+        script.onload = GetMap;
+
+        head.appendChild(script);
+    }
+    else geocodeQuery(location)
     var cross_origin_scripts = document.querySelectorAll("script[crossorigin=\"anonymus\"]");
     cross_origin_scripts.forEach(sc => {if(sc.parentElement!=null) sc.parentElement.removeChild(sc)});
-    var head = document.getElementsByTagName("head")[0];
-
-    locationString = location;
-    var script = document.createElement("script");
-    script.className = "map-per-request";
-    script.type = "text/javascript";
-    script.async = true;
-    script.defer = true;
-    script.src = mapsApiUrl;
-    script.onload = callback;
-
-    head.appendChild(script);
 }
+
 
 
 

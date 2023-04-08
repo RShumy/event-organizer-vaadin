@@ -125,6 +125,7 @@ public class EventDetailsView extends VerticalLayout {
         eventEndDate.setLabel("Event End Date");
         eventDescription.setWidth("30%");
         eventDescription.setHeight("100%");
+        eventDescription.getStyle().set("padding", "0px");
         eventDescription.setLabel("Event Description");
         locationQueryString.setId("myQuery");
         locationQueryString.getStyle().set("visibility","hidden");
