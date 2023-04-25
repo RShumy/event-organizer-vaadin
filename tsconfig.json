@@ -28,6 +28,7 @@
     }
   },
   "include": [
+    "target/flow-frontend",
     "frontend/**/*.ts",
     "frontend/index.js",
     "types.d.ts"

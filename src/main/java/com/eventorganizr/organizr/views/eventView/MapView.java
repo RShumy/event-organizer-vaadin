@@ -10,7 +10,7 @@ import com.vaadin.flow.component.html.IFrame;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 
-@JsModule("./map-view-partial.js")
+//@JsModule("./map-view-partial.js")
 public class MapView extends VerticalLayout {
     public Div mapView = new Div();
 
@@ -23,7 +23,6 @@ public class MapView extends VerticalLayout {
     };
 
     public void showMap(String locationQuery){
-//        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0, GetMap)", locationQuery);
-        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0)", locationQuery);
+//        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0)", locationQuery);
     }
 }

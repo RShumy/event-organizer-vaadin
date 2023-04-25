@@ -2,16 +2,19 @@ package com.eventorganizr.organizr.views.eventView;
 
 import com.eventorganizr.organizr.entity.Event;
 import com.eventorganizr.organizr.service.EventService;
+import com.eventorganizr.organizr.views.MainPage;
 import com.vaadin.flow.component.*;
 import com.vaadin.flow.component.grid.ItemClickEvent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import javax.annotation.security.PermitAll;
 import java.util.Optional;
-
+@PermitAll
 @Route(value = ""
-//        , layout = MainPage.class
+        , layout = MainPage.class
 )
 public class EventMainView extends VerticalLayout {
 
