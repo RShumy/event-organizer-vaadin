@@ -1,4 +1,7 @@
 ﻿## Event Organizer WIP (Spring Boot - backend, Vaadin - frontend)
+**NOTE** : Vaadin has issues with newer npm versions 
+__ Consider rolling back npm cli version to 8.5.5 or 8.19.2 __
+You can run `npm install -g npm@8.5.5`
 ### Back End (Controlers included for Vaadin WebClient(not created yet)) 
 #### Simple Event Organizer WebApp. 
 Models:
