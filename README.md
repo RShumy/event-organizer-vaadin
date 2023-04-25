@@ -25,6 +25,7 @@ Models:
 - Added only Authority entity
 - Created Relational Entity: UserAuthorities (n:n) - declared only by Hibarante @ManyToMany
 - Log-in Page is provided by Spring Security for now
+- No Password encription is used for now, as populating the Data Base is via SQL script
 
 ### TO DO:
 	- Create EventConsumables list view, selection functionalities and adding to participants
