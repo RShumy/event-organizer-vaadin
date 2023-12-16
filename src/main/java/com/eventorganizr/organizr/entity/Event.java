@@ -39,13 +39,13 @@ public class Event {
         Cannot pinpoint why the reverted set-up won't work, because the JoinedTable is set up symmetrically in both entities.
     */
 
-    @OneToMany(mappedBy = "event", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @Column(nullable = false)
     @JsonManagedReference(value = "participants")
     private Set<Participant> participants;
-    //Changed FetchType from EAGER to LAZY
 
-    @ManyToMany(targetEntity = Consumable.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+
+    @ManyToMany(targetEntity = Consumable.class,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(
             name = "event_consumables",
             joinColumns = { @JoinColumn(name = "event_id", insertable = true, updatable = true) },
@@ -61,8 +61,9 @@ public class Event {
         consumables.remove(consumable);
     }
 
+
     public Event(String eventName, LocalDateTime eventBeginDate, LocalDateTime eventEndDate,
-                 String locationQueryString, String eventDescription, Long createdByUserId) {
+                 String eventDescription, String locationQueryString, Long createdByUserId) {
         this.eventName = eventName;
         this.eventBeginDate = eventBeginDate;
         this.eventEndDate = eventEndDate;

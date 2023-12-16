@@ -1,6 +1,7 @@
 package com.eventorganizr.organizr.security;
 
 import com.eventorganizr.organizr.service.UserService;
+import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -11,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.authentication.event.LogoutSuccessEvent;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -23,6 +27,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,15 +38,23 @@ import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.server.WebFilterExchange;
 import org.springframework.security.web.server.authentication.ServerAuthenticationFailureHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.util.UrlPathHelper;
+import org.yaml.snakeyaml.reader.StreamReader;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import javax.swing.*;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -50,21 +63,31 @@ public class SecurityConfig
         extends VaadinWebSecurity
 {
 
-    //TODO: Implement getting the DataSource correctly and setting up the JDBC UserDetailsManager with the Password Encoder
 
-    UserPrincipalDetailsService userDetailsService;
+    private final UserPrincipalDetailsService userDetailsService;
+    private final PasswordEncoder passwordEncoder;
 
-    SecurityConfig(UserPrincipalDetailsService userDetailsService){
+    SecurityConfig(UserPrincipalDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
+        this.passwordEncoder = passwordEncoder;
         System.out.println(
                 "From Security Config -> the User Detail Service hash is: " +
                         System.identityHashCode(userDetailsService.getUserService()));
     }
 
+//    @Bean
+//    @Primary
+//    public AuthenticationManagerBuilder authManagerBuilder(AuthenticationManagerBuilder authManager) throws Exception {
+//        return authManager.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder()).and();
+//    }
+
+    // Added afterwards
     @Bean
-    @Primary
-    public AuthenticationManagerBuilder authManagerBuilder(AuthenticationManagerBuilder authManager) throws Exception {
-        return authManager.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder()).and();
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetailsService);
+        provider.setPasswordEncoder(passwordEncoder); // Choose your preferred password encoder
+        return provider;
     }
 
     @Bean(name = "VaadinSecurityFilterChainBean")
@@ -87,18 +110,19 @@ public class SecurityConfig
 
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests(auth ->
-                        auth
-                                .antMatchers("/VAADIN/**").permitAll()
-                                .antMatchers("/h2/**").permitAll()
-                                .antMatchers("/image/**").permitAll()
-                                .antMatchers("/api/**").authenticated()
-                                .anyRequest().authenticated()
+                            auth
+                            .antMatchers("/VAADIN/**","/h2/**","/image/**","/favicon.ico")
+                                .permitAll()
+                            .antMatchers("/api/**").authenticated()
+                            .anyRequest().authenticated()
                 ).exceptionHandling()
                 .and().httpBasic().and()
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .userDetailsService(userDetailsService)
                 .formLogin()
-                .and().build();
+                .and().logout()
+                .and()
+                .build();
     }
 
 
@@ -106,8 +130,7 @@ public class SecurityConfig
 //      No PasswordEncoder for now as Registering methods and classed are not yet present
 //      and Auto-populating the Data Base with Users is done via Sql Script
     @Bean
-    public static PasswordEncoder passwordEncoder(){ return NoOpPasswordEncoder.getInstance();}
-
+    public static PasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder();}
 
 
 }

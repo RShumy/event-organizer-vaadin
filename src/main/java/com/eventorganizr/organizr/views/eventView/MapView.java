@@ -9,8 +9,9 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.IFrame;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.dom.Element;
 
-//@JsModule("./map-view-partial.js")
+@JsModule("./map-view-partial.js")
 public class MapView extends VerticalLayout {
     public Div mapView = new Div();
 
@@ -18,11 +19,14 @@ public class MapView extends VerticalLayout {
         this.setPadding(false);
         mapView.setId("myMap");
         mapView.setSizeFull();
-        mapView.getElement().getStyle().set("border", "2px solid white");
+        if (mapView.isVisible())
+
+        mapView.getElement().getStyle().set("border-radius","10px");
+        mapView.getElement().getStyle().set("border", "5px solid white");
         add(mapView);
     };
 
     public void showMap(String locationQuery){
-//        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0)", locationQuery);
+        if (!locationQuery.isEmpty()) UI.getCurrent().getPage().executeJs("ShowMap($0)", locationQuery);
     }
 }

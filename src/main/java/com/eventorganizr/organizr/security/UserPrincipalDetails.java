@@ -16,7 +16,11 @@ public class UserPrincipalDetails implements UserDetails {
 
     UserPrincipalDetails(User user){
         this.user = user;
-        System.out.println("From User Details :" + user.getUserName());
+        // Delete after
+        System.out.println(
+                "From User Details :" + user.getUserName() +
+                        "\n" + "Authorities: " + getAuthorities()
+        );
     }
 
     @Override

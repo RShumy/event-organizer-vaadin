@@ -6,19 +6,25 @@
 // export default APIkey;
 import APIkey from "./API-key.ts";
 import 'bingmaps';
+import {waitUntil} from "workbox-core/_private";
 var map , searchManager;
 var mapsApiUrl = "https://www.bing.com/api/maps/mapcontrol?callback=GetMap";
 var locationString;
 
 window.GetMap = async function getMap() {
-    // setting this condition does not display the map
+
 
     map = await new Microsoft.Maps.Map(document.getElementById('myMap'), {
         credentials : APIkey
     });
-    console.log(map);
+
+
+
+    // console.log(map);
+
     //Make a request to geocode New York, NY.
     console.log(locationString + '  --- PROPERTY NULL ??? ----');
+
     await geocodeQuery(locationString);
 }
 
@@ -78,6 +84,8 @@ window.ShowMap = function showMap(location){
     var cross_origin_scripts = document.querySelectorAll("script[crossorigin=\"anonymus\"]");
     cross_origin_scripts.forEach(sc => {if(sc.parentElement!=null) sc.parentElement.removeChild(sc)});
 }
+
+
 
 
 

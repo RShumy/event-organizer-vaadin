@@ -13,7 +13,8 @@ public class Authority implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long authorityId;
+    private Integer authorityId;
+    @Column(unique = true)
     private String name;
 
     public Authority(){}

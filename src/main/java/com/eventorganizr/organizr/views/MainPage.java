@@ -18,7 +18,6 @@ public class MainPage extends AppLayout {
 //        createDrawer();
 //        addClassName("list-view");
 //        setSpacing(false);
-//
 //        setSizeFull();
 //        setJustifyContentMode(JustifyContentMode.CENTER);
 //        setDefaultHorizontalComponentAlignment(Alignment.CENTER);
