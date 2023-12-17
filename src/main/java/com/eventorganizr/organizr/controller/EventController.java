@@ -9,6 +9,7 @@ import com.eventorganizr.organizr.entity.compositeKeys.ParticipantKey;
 import com.eventorganizr.organizr.service.ConsumableService;
 import com.eventorganizr.organizr.service.EventService;
 import com.eventorganizr.organizr.service.ParticipantService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,10 +30,18 @@ public class EventController {
         this.participantService = participantService;
     }
 
+
     @GetMapping(path = "all")
     public List<Event> getEvents(){
         return eventService.getEvents();
     }
+
+    @GetMapping(path = "{id}")
+    public Event getEvent(@PathVariable Long id){
+        return eventService.findEvent(id);
+    }
+
+//    @GetMapping(path = "created_by_logged_in")
 
     @PostMapping
     public void createEvent(@RequestBody Event event){

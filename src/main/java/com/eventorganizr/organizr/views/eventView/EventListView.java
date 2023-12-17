@@ -21,7 +21,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
-
 public class EventListView extends VerticalLayout {
 
     Grid<Event> eventGrid = new Grid<>(Event.class, false);
@@ -56,8 +55,6 @@ public class EventListView extends VerticalLayout {
         eventGrid.addColumn(createEventRenderer()).setHeader(getEventHeader());
         eventGrid.getColumns().forEach( col -> col.setAutoWidth(true));
         eventGrid.addItemClickListener(event -> fireEvent(new SelectedEvent(this, event.getItem())));
-//        eventGrid.setColumns("eventName");
-//        eventGrid.addColumn(new LocalDateTimeRenderer<>(Event::getEventBeginDate)).setHeader("eventBeginDate");
     }
 
     private Component getEventHeader(){
@@ -107,7 +104,7 @@ public class EventListView extends VerticalLayout {
     public Grid<Event> getEventGrid() { return eventGrid; }
 
     public static abstract class ListViewEvent extends ComponentEvent<EventListView> {
-        private Event event;
+        private final Event event;
 
         protected ListViewEvent(EventListView source, Event event) {
             super(source, false);

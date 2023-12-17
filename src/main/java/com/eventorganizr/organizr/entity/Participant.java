@@ -16,14 +16,8 @@ public class Participant {
 
     @EmbeddedId
     private ParticipantKey participantId;
-    /*
-    Removing CascadeType will make JPA/Hibernate call delete operation when deleting from Participant Repository
-    If any CascadeType is still attached to the User Entity in the Relationship Annotations of User, then
-    when calling delete Event from EventService, JPA won't call the delete operation for the Event.
-    This is also valid vice-versa, when calling to delete a User, JPA won't call the delete operation for the respective User
-    if the Participant is still tied with a CascadeType with Event.
-    */
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @MapsId("eventId")
     @JoinColumn(name = "event_id")
     @JsonBackReference(value = "event")

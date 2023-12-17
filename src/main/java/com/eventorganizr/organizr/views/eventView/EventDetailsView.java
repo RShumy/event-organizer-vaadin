@@ -80,6 +80,11 @@ public class EventDetailsView extends VerticalLayout {
         }
     }
 
+    /**
+     * Vaadin Java Classes to modify the html attribute on html input fields as defined by Vaadin
+     * this applies on to the class, but logic can also be created and generified.
+     * @param enabled
+     */
     protected void setFields(boolean enabled){
         Arrays.stream(this.getClass().getDeclaredFields())
                 .filter(f -> checkClass(f.getType()))

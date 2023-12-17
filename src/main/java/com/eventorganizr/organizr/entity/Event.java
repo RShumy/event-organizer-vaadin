@@ -16,16 +16,19 @@ import java.util.Set;
 // https://stackoverflow.com/questions/3325387/infinite-recursion-with-jackson-json-and-hibernate-jpa-issue
 @JsonIgnoreProperties({"participants","consumables"})
 public class Event {
+    public Event(){}
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long eventId;
-
     private String eventName;
     private LocalDateTime eventBeginDate;
     private LocalDateTime eventEndDate;
     private String locationQueryString;
+
     private String eventDescription;
 
+    private Long createdByUserId;
     /*
     @OneToMany CascadeType.REMOVE triggers JPA Repository to call delete(participant) from Many-To-Many table of the Data Base
     In User entity the CascadeType can remain as .ALL
@@ -35,10 +38,12 @@ public class Event {
     - Applied the same change to the Set of participants from User and reverted here to CascadeType.ALL, JPA Repository will not call the delete function
         Cannot pinpoint why the reverted set-up won't work, because the JoinedTable is set up symmetrically in both entities.
     */
+
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     @Column(nullable = false)
     @JsonManagedReference(value = "participants")
     private Set<Participant> participants;
+
 
     @ManyToMany(targetEntity = Consumable.class,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(
@@ -56,14 +61,15 @@ public class Event {
         consumables.remove(consumable);
     }
 
-    public Event(){}
 
-    public Event(String eventName, LocalDateTime eventBeginDate, LocalDateTime eventEndDate, String locationQueryString, String eventDescription) {
+    public Event(String eventName, LocalDateTime eventBeginDate, LocalDateTime eventEndDate,
+                 String eventDescription, String locationQueryString, Long createdByUserId) {
         this.eventName = eventName;
         this.eventBeginDate = eventBeginDate;
         this.eventEndDate = eventEndDate;
         this.locationQueryString = locationQueryString;
         this.eventDescription = eventDescription;
+        this.createdByUserId = createdByUserId;
     }
 
 }

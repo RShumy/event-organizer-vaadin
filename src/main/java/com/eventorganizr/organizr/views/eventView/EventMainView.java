@@ -1,40 +1,48 @@
 package com.eventorganizr.organizr.views.eventView;
 
 import com.eventorganizr.organizr.entity.Event;
+import com.eventorganizr.organizr.security.SecurityService;
 import com.eventorganizr.organizr.service.EventService;
+import com.eventorganizr.organizr.views.MainPage;
+import com.eventorganizr.organizr.views.navView.NavView;
 import com.vaadin.flow.component.*;
-import com.vaadin.flow.component.grid.ItemClickEvent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 
+import javax.annotation.security.PermitAll;
 import java.util.Optional;
-
+@PermitAll
 @Route(value = ""
-//        , layout = MainPage.class
+        , layout = MainPage.class
 )
 public class EventMainView extends VerticalLayout {
 
-
+    private SecurityService securityService;
 
     private final EventListView eventList = new EventListView();
 
     private final EventDetailsView eventDetailsView = new EventDetailsView();
 
-
+    private final NavView navView;
 
     HorizontalLayout eventListAndDetailView = new HorizontalLayout(eventList,eventDetailsView);
+    VerticalLayout navAboveListAndDetailView = new VerticalLayout();
 
     private final EventService eventService;
 
-
-    public EventMainView(EventService eventService){
+    public EventMainView(EventService eventService
+            , SecurityService securityService
+    ){
+        this.securityService = securityService;
         this.eventService = eventService;
-
+        this.navView = new NavView(securityService);
         addClassName("event-main-view");
 
         updateEvents();
+
         configureEventDetailsView();
+
         setSizeFull();
 
         add(getContent());
@@ -46,12 +54,8 @@ public class EventMainView extends VerticalLayout {
         eventList.addListener(EventListView.SelectedEvent.class, event -> openEventDetailsView(event.getEvent()));
         eventDetailsView.setSizeFull();
         eventDetailsView.addListener(EventDetailsView.SaveEvent.class,this::saveEvent);
-        //            closeEventDetailsView();
         eventDetailsView.addListener(EventDetailsView.DeleteEvent.class, this::deleteEvent);
         eventDetailsView.closeButton.addClickListener(click -> closeEventDetailsView());
-//        eventDetailsView.addListener();
-//        eventDetailsView.add();
-
     }
 
     private void deleteEvent(EventDetailsView.DeleteEvent event) {
@@ -70,11 +74,15 @@ public class EventMainView extends VerticalLayout {
 
     public Component getContent() {
         configureEventDetailsView();
-        eventListAndDetailView.setSizeFull();
+        navView.setHeight("5%");
+        eventListAndDetailView.setHeight("95%");
+        eventListAndDetailView.setWidth("100%");
         eventListAndDetailView.setFlexGrow(1, eventList);
         eventListAndDetailView.setFlexGrow(4, eventDetailsView);
         eventDetailsView.setVisible(false);
-        return eventListAndDetailView;
+        navAboveListAndDetailView.add(navView,eventListAndDetailView);
+        navAboveListAndDetailView.setSizeFull();
+        return navAboveListAndDetailView;
     }
 
     public void openEventDetailsView(Event event){
