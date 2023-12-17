@@ -5,8 +5,8 @@ You can run `npm install -g npm@8.5.5`
 ### Back End (Controlers included for Vaadin WebClient(not created yet)) 
 #### Simple Event Organizer WebApp. 
 Models:
-- 3 Base Entity Clases:
-	 - User, Event, Consumable
+- 4 Base Entity Clases:
+	 - Authority, User, Event, Consumable
 - 2 Relational Entity Classes:
 	 - Participant (n:n) (User, Event) - CompositeKeys/ParticipantKey Class
 	 - ParticipantConsumable (n:n) (Participant, Consumable) - CompositeKeys/ParticipantConsumableKey Class
@@ -14,7 +14,7 @@ Models:
 	 - EventConsumable (n:n) (Event - owner entity)
 	 - UserAuthorities (n:n) (User - owner entity)
 #### JPA Repositories
-#### Services (UserService, EventService, ConsumableService ,ParticipantService , PaticipantConsumableService)
+#### Services (SecuritySerivice, AuthorityService, UserService, EventService, ConsumableService ,ParticipantService , PaticipantConsumableService)
 #### Spring WebControllers (UserController, EventController, ParticipantController)
 #### H2 In-Memory Data Base with Generated, Inserted data.
 
@@ -22,10 +22,14 @@ Models:
 - For now Views are calling Service Clasess Directly, Vaadin is auto-routing
 
 ### Added Spring Security:
-- Added only Authority entity
-- Created Relational Entity: UserAuthorities (n:n) - declared only by Hibarante @ManyToMany
+- Added SecuritySerive
 - Log-in Page is provided by Spring Security for now
-- No Password encription is used for now, as populating the Data Base is via SQL script
+- Created Relational Entity: UserAuthorities (n:n) - declared only by Hibarante @ManyToMany
+- Added Password encryption BCrypt
+- For learning purposes: Data Base initialization is done via InitCLR extending CommandLineRunner
+
+### JUnit Tests:
+- Not a recommended method for testing in production, will have to revise it later
 
 ### TO DO:
 	- Create EventConsumables list view, selection functionalities and adding to participants
@@ -35,8 +39,6 @@ Models:
 	- Create Registration Form
 	- Implement Method access restricitons
 	- Functionalities with invite/join and Event privacy statuses (Public(free, ticket based),Private(free invite only, ticket based))
-	- Figure out a solution to make login POST request test with Postman work, after excluding .httpbasic() from SecurityFilterChain
-	
 
 
 
