@@ -5,7 +5,6 @@ import com.eventorganizr.organizr.entity.User;
 import com.eventorganizr.organizr.exception.RecordNotFoundException;
 import com.eventorganizr.organizr.repository.UserRepository;
 import lombok.Data;
-import lombok.extern.log4j.Log4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +44,7 @@ public class UserService {
         System.out.println("Save User called from User Service");
         try { userRepository.save(user); }
         catch (RuntimeException e){
+            System.out.println(e.getMessage());
             throw new RuntimeException("Cannot create user with existing User Name or Email!");
         }
     }
