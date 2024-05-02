@@ -22,17 +22,10 @@ window.GetMap = async function getMap() {
 
     // @ts-ignore
     map = await new Microsoft.Maps.Map(document.getElementById('myMap'),
-        {
-            credentials: APIkey
-        });
-
-
-
-    // console.log(map);
-
-    //Make a request to geocode New York, NY.
+        { credentials: APIkey } );
     console.log(locationString + '  --- PROPERTY NULL ??? ----');
 
+    //Make a request to geocode
     await geocodeQuery(locationString);
 }
 
@@ -45,7 +38,18 @@ function geocodeQuery(query : string) {
             searchManager = new Microsoft.Maps.Search.SearchManager(map);
             geocodeQuery(query);
         });
-    } else {
+    }
+    if (query == null || query.trim() == "") {
+            console.log("QUERY IS NULL OR EMPTY : " + query + " :")
+            map.entities.clear();
+            map.setView(
+                {
+                center: new Microsoft.Maps.Location(0, 0),
+                zoom: 1
+                }
+            )
+    }
+    else {
         var searchRequest = {
             where: query,
             callback: function (r? : any) {

@@ -15,6 +15,33 @@ frontend/API-key.ts
 .springBeans
 .sts4-cache
 
+# eclipse specific git ignore
+Event-Organizer-Vaadin.userlibraries
+*.pydevproject
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+*.eml
+
+*target*
+*.jar
+*.war
+*.ear
+*.class
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

@@ -5,6 +5,7 @@ import com.eventorganizr.organizr.entity.User;
 import com.eventorganizr.organizr.exception.RecordNotFoundException;
 import com.eventorganizr.organizr.repository.UserRepository;
 import lombok.Data;
+import org.apache.commons.codec.language.bm.Languages;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +41,8 @@ public class UserService {
 
     public void saveUser(User user) {
         //Removed Password field from updateUser method to prevent perpetual re-encoding when save user is called
-        //Password is saved only at registration if the UserName is not found in the Data Base
-        System.out.println("Save User called from User Service");
+        //Password is encrypted further up the chain and saved only at registration if the UserName is not found in the Data Base
+        System.out.println(user);
         try { userRepository.save(user); }
         catch (RuntimeException e){
             System.out.println(e.getMessage());
@@ -51,47 +52,50 @@ public class UserService {
 
     //For insertion and learning purposes only, to be deleted afterwards
     //---------------------------------------------------------------
-    public ServiceHolder<UserService,User> createUser(String UserName,String FirstName,String LastName,String Email,String Password,boolean IsActive) {
-        User user = new User( UserName, FirstName, LastName, Email, Password, IsActive);
-        saveUser(user);
-        updatePassword(user);
+    public ServiceHolder<UserService,User> createUser(String userName,String firstName,String lastName,String email,String password,boolean isActive) {
+        User user = new User( userName, firstName, lastName, email, password, isActive);
+        user.setPassword(passwordEncoder.encode(password));
         return ServiceHolder.of(this).with(user);
     }
 
     @Data
-    public static class ServiceHolder<S extends UserService, V extends User>{
-        private S service;
+    public final static class ServiceHolder<S extends UserService, V extends User>{
+        private final S service;
         private V value;
         private ServiceHolder(S service){
             this.service = service;
         }
 
-        public static <S extends UserService, V extends User> ServiceHolder<S, V> of(S service){
+        private static <S extends UserService, V extends User> ServiceHolder<S, V> of(S service){
             return new ServiceHolder<>(Objects.requireNonNull(service));
         }
 
         public <B extends UserService,U extends User> ServiceHolder<B, U> with(U value){
-            if (this.service != null){
+            if (this.service != null) {
                 this.value = (V) value;
                 return (ServiceHolder<B, U>) this;
             }
-            else throw new RuntimeException("Cannot return ServiceHolder!");
+            else throw new ClassCastException("Cannot return service");
         }
 
-        public void withAuthorities(Authority... authorities){
+        public <B extends UserService,U extends User> ServiceHolder<B, U> withAuthorities(Authority... authorities){
             for (Authority authority : authorities) {
                 value.addAuthority(authority);
-                service.saveUser(value);
             }
+            return (ServiceHolder<B, U>) this;
         };
+
+        public void create(){
+            service.saveUser(this.value);
+        }
 
     }
     //----------------------------------------------------------
 
     public void updatePassword(User user){
         User userToUpdate = findUser(user.getUserId());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        saveUser(user);
+        userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
+        saveUser(userToUpdate);
     }
 
     //Removed Password field from updateUser method to prevent perpetual re-encoding when save user is called

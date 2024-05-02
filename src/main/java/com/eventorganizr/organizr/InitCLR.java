@@ -25,205 +25,205 @@ public class InitCLR {
             // User with Authorities Hardcoded Data Insert
             {
                 userService.createUser("user", "Lynnett", "East", "least0@trellian.com", "user", true)
-                        .withAuthorities(authorityService.findAuthority(3));
+                        .withAuthorities(authorityService.findAuthority(3)).create();
                 userService.createUser("svennings1", "Stafani", "Vennings", "svennings1@51.la", "9VJIgDt", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("tbenedicte2", "Thadeus", "Benedicte", "tbenedicte2@clickbank.net", "31c3nEeRPO", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("hstanlick3", "Herve", "Stanlick", "hstanlick3@ucoz.com", "SymjwWE7", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("lcanavan4", "Lionel", "Canavan", "lcanavan4@quantcast.com", "spvz0pA", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("mthresher5", "Meggy", "Thresher", "mthresher5@clickbank.net", "P94IFXCbuW3p", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("cgildea6", "Camala", "Gildea", "cgildea6@printfriendly.com", "RfwpsT", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("jtille7", "Jasen", "Tille", "jtille7@japanpost.jp", "owmohGSi0cxY", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("gfooks8", "Goddart", "Fooks", "gfooks8@nhs.uk", "T0YfekmB", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("cwimbridge9", "Claretta", "Wimbridge", "cwimbridge9@sina.com.cn", "ozGGKYVukmp", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("rjolya", "Ricky", "Joly", "rjolya@epa.gov", "volWmm0K", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("mkiggelb", "Maynard", "Kiggel", "mkiggelb@army.mil", "mCpFC7YfZ", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("aburragec", "Audy", "Burrage", "aburragec@privacy.gov.au", "bpEdPIZodwR", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("ekerid", "Earvin", "Keri", "ekerid@so-net.ne.jp", "rqepxrDdO", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("laltone", "Lanni", "Alton", "laltone@cloudflare.com", "eCOexbUMdGf", true)
-                        .withAuthorities(authorityService.findAuthority(2));
+                        .withAuthorities(authorityService.findAuthority(2)).create();
                 userService.createUser("dkunklerf", "Daryl", "Kunkler", "dkunklerf@hexun.com", "hEl55ykOF5p0", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("tfeekg", "Tomasine", "Feek", "tfeekg@hibu.com", "U4JZuvRK45", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("bweatherdonh", "Bonnee", "Weatherdon", "bweatherdonh@plala.or.jp", "WkbU4jflXR", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cbertsoni", "Carma", "Bertson", "cbertsoni@imdb.com", "AdtV943aisrC", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cyulej", "Chad", "Yule", "cyulej@sbwire.com", "KNNynhk6", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("gcollissk", "Glenn", "Colliss", "gcollissk@hhs.gov", "AmIYqdaef", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("fhaymesl", "Fonsie", "Haymes", "fhaymesl@miibeian.gov.cn", "4YfkxeGiI8DP", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("aarondelm", "Aggy", "Arondel", "aarondelm@wikia.com", "PEPltFAxT9D", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("lpetzoltn", "Lilli", "Petzolt", "lpetzoltn@histats.com", "XxyiE4e5gin", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("eslimano", "Eugenia", "Sliman", "eslimano@netvibes.com", "gBJJ3ti", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cmcgrayp", "Clive", "McGray", "cmcgrayp@businessinsider.com", "sdzwoMlAE2", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("smacconnalq", "Stanwood", "MacConnal", "smacconnalq@psu.edu", "iyCOTYO", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("heatonr", "Halli", "Eaton", "heatonr@globo.com", "2a4m0KWOxt", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("eblofelds", "Emma", "Blofeld", "eblofelds@techcrunch.com", "Yg1Hk7owi", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("scohent", "Sadie", "Cohen", "scohent@ovh.net", "vxf1NFpmIkG", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("agerrardu", "Amalee", "Gerrard", "agerrardu@geocities.jp", "D2Oz9TBYA4n", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("twitteringv", "Teressa", "Wittering", "twitteringv@flickr.com", "h9FCRdqcKwr", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("kaspinwallw", "Kiel", "Aspinwall", "kaspinwallw@trellian.com", "TP9Gh9LY", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("kblackburnex", "Kort", "Blackburne", "kblackburnex@devhub.com", "ByRzpXJ3Hdl6", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cmatthiesony", "Chris", "Matthieson", "cmatthiesony@oaic.gov.au", "KJa13bd", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("fvanderveldenz", "Fiann", "Van der Velden", "fvanderveldenz@tinypic.com", "GyBgFEE", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("rbillo10", "Robinette", "Billo", "rbillo10@sohu.com", "37NM0TKJU", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("mbrandone11", "Marjory", "Brandone", "mbrandone11@blogtalkradio.com", "zhKIcP3IvZE2", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("klimbert12", "Karim", "Limbert", "klimbert12@tinyurl.com", "kUy7dLj2O", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("kdohr13", "Kendell", "Dohr", "kdohr13@si.edu", "uucdNjGFsdy0", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("ady14", "Amos", "Dy", "ady14@eventbrite.com", "GWuWfobwEG", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("brobiou15", "Blair", "Robiou", "brobiou15@discovery.com", "XHswyn6f", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("fkorbmaker16", "Fayette", "Korbmaker", "fkorbmaker16@twitter.com", "6RgASGR", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("sceliz17", "Siouxie", "Celiz", "sceliz17@virginia.edu", "ThI8Yn", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("rdussy18", "Roberto", "Dussy", "rdussy18@deliciousdays.com", "gsuEt5Jq", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("icaudelier19", "Innis", "Caudelier", "icaudelier19@unesco.org", "N8HTtwledYq", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("lhedgeley1a", "Ludovico", "Hedgeley", "lhedgeley1a@amazon.co.jp", "Y4UjY8sQo", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("prosborough1b", "Pincas", "Rosborough", "prosborough1b@whitehouse.gov", "FZKPGk", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("vrubinek1c", "Vance", "Rubinek", "vrubinek1c@ed.gov", "zPMu6HH4tY5w", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("kabramowitch1d", "Kacy", "Abramowitch", "kabramowitch1d@skyrock.com", "WOWY4ac", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("dkleinpeltz1e", "Davita", "Kleinpeltz", "dkleinpeltz1e@weather.com", "MJ2peBCd3Igc", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("gdenrico1f", "Giavani", "DEnrico", "gdenrico1f@mit.edu", "43gR9di8G", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("ajerger1g", "Alexine", "Jerger", "ajerger1g@samsung.com", "5Cq0GUBeLx", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("hbennis1h", "Hildagard", "Bennis", "hbennis1h@smh.com.au", "qyMoFzx", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("ldrummer1i", "Lonnie", "Drummer", "ldrummer1i@ucoz.ru", "JlJs34O9", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("aelgie1j", "Adelle", "Elgie", "aelgie1j@cbc.ca", "A4nd3Ia", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("jgreenmon1k", "Jessa", "Greenmon", "jgreenmon1k@nps.gov", "r1i0gv", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("lstilwell1l", "Lindsay", "Stilwell", "lstilwell1l@com.com", "fEIYp86a", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("hnappin1m", "Hermann", "Nappin", "hnappin1m@fema.gov", "fauhhIl", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("tmilesap1n", "Thaddus", "Milesap", "tmilesap1n@google.com.au", "FHY2ssRY", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("iyurkov1o", "Ianthe", "Yurkov", "iyurkov1o@cloudflare.com", "3MPeItnwpzsX", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("dfrome1p", "Demetre", "Frome", "dfrome1p@tamu.edu", "38blJqlY4", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("wsloat1q", "Winne", "Sloat", "wsloat1q@naver.com", "hMPCVn5DW3h", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("snulty1r", "Shelly", "Nulty", "snulty1r@europa.eu", "qf1XEw", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cstorkes1s", "Corine", "Storkes", "cstorkes1s@google.it", "Q4whWm23s", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("mstroobant1t", "Mallorie", "Stroobant", "mstroobant1t@meetup.com", "nhgfRMLIL", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("mtarrier1u", "Marsha", "Tarrier", "mtarrier1u@wordpress.com", "OBjN0uFTFZCn", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("emcbrearty1v", "Eleonora", "McBrearty", "emcbrearty1v@weibo.com", "BT0LhjFu6cY", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("udavydoch1w", "Umeko", "Davydoch", "udavydoch1w@phpbb.com", "pKuV4VQ7W5", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("kroizn1x", "Kyle", "Roizn", "kroizn1x@independent.co.uk", "P7GCpeVd9cAW", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("qroskelly1y", "Quill", "Roskelly", "qroskelly1y@earthlink.net", "MzGU9jpaoO6", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("mpyford1z", "Meagan", "Pyford", "mpyford1z@globo.com", "gWwgSwfy", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("asange20", "Annamaria", "Sange", "asange20@people.com.cn", "R0ifb06YId", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cesselen21", "Cherish", "Esselen", "cesselen21@sina.com.cn", "9I1SKV", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("nforo22", "Niel", "Foro", "nforo22@buzzfeed.com", "zqlzBQ", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("zjoyce23", "Zared", "Joyce", "zjoyce23@oakley.com", "JAWiKhcHpbNV", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("wabbott24", "Wynn", "Abbott", "wabbott24@google.fr", "vwzkZWxV1", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("dlawrenz25", "Dulcine", "Lawrenz", "dlawrenz25@bluehost.com", "qcfEw9", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("agreder26", "Amble", "Greder", "agreder26@chron.com", "VtpR9KgHLhLA", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("mrubel27", "Mathe", "Rubel", "mrubel27@nps.gov", "PJD8gTJFiF5", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cmartugin28", "Chloette", "Martugin", "cmartugin28@fema.gov", "Ijj7MgAjE", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("twanley29", "Tarah", "Wanley", "twanley29@blinklist.com", "iElgHW", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cbowle2a", "Costanza", "Bowle", "cbowle2a@t.co", "R3ItEhqn", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("jasher2b", "Jerrie", "Asher", "jasher2b@abc.net.au", "GjyZjrPvfX93", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("kridel2c", "Kiley", "Ridel", "kridel2c@domainmarket.com", "Bfh6C6Gdc5", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("sgiraudy2d", "Staci", "Giraudy", "sgiraudy2d@friendfeed.com", "6z7uvB", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("tdrake2e", "Theresina", "Drake", "tdrake2e@wired.com", "jgw2nEuMSk", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("ecarder2f", "Esta", "Carder", "ecarder2f@ihg.com", "zpqHYJEt4", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("prawcliffe2g", "Petunia", "Rawcliffe", "prawcliffe2g@cocolog-nifty.com", "dCL9xX", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("atomczykowski2h", "Abagael", "Tomczykowski", "atomczykowski2h@harvard.edu", "7Tj3X7DI", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("abrager2i", "Ange", "Brager", "abrager2i@unc.edu", "91kUxXFvsW1Z", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("hjoslin2j", "Henriette", "Joslin", "hjoslin2j@abc.net.au", "t4LjDZkeVy4", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("csijmons2k", "Charlena", "Sijmons", "csijmons2k@utexas.edu", "FVNg8sn6", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("tondricek2l", "Tallulah", "Ondricek", "tondricek2l@yellowbook.com", "qFwDDIKxZCU", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cpatience2m", "Caterina", "Patience", "cpatience2m@abc.net.au", "dTFc0zUGAHIZ", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cgroocock2n", "Cordell", "Groocock", "cgroocock2n@marketwatch.com", "KPZ8BQz", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cpryke2o", "Cesya", "Pryke", "cpryke2o@mysql.com", "XpQY9jfhO", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("djurca2p", "Duane", "Jurca", "djurca2p@sohu.com", "3QDwvj69kiO", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("cbelson2q", "Codee", "Belson", "cbelson2q@timesonline.co.uk", "k8atQrVO7e", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
                 userService.createUser("jswine2r", "Jacquelynn", "Swine", "jswine2r@deliciousdays.com", "Rnebwgcw", true)
-                        .withAuthorities(authorityService.findAuthority(1));
+                        .withAuthorities(authorityService.findAuthority(1)).create();
             }
             // Event Hardcoded Data Insert
             {
