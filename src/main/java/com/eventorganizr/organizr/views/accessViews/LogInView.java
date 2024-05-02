@@ -9,16 +9,10 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.login.LoginForm;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.page.Push;
 import com.vaadin.flow.router.BeforeEnterEvent;
 import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouteConfiguration;
-import com.vaadin.flow.server.VaadinServletResponse;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
-import org.w3c.dom.css.RGBColor;
-
-import java.io.IOException;
 
 
 @Route("/login")
@@ -51,15 +45,12 @@ public class LogInView extends VerticalLayout
     public void configureRegisterNewUser(){
         registerNewUser.setAlignItems(Alignment.CENTER);
         registerNewUser.setWidth("300px");
-//        registerNewUser.setJustifyContentMode(JustifyContentMode.CENTER);
         H3 description = new H3("Do you want to try ?");
         Button signUpNow = new Button("Sign Up Now");
 
 
         signUpNow.setIcon(new Icon(VaadinIcon.USER));
-        signUpNow.addClickListener(event -> {
-            UI.getCurrent().navigate("sign-up");
-        });
+        signUpNow.addClickListener(event -> UI.getCurrent().navigate("sign-up"));
         signUpNow.getStyle().set("color", "greenyellow");
 
 

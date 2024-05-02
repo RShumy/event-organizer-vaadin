@@ -21,7 +21,7 @@ import java.util.Optional;
 )
 public class EventMainView extends VerticalLayout {
 
-    private SecurityService securityService;
+    private final EventService eventService;
 
     private final EventListView eventList = new EventListView();
 
@@ -32,12 +32,10 @@ public class EventMainView extends VerticalLayout {
     HorizontalLayout eventListAndDetailView = new HorizontalLayout(eventList,eventDetailsView);
     VerticalLayout navAboveListAndDetailView = new VerticalLayout();
 
-    private final EventService eventService;
 
     public EventMainView(EventService eventService
             , SecurityService securityService
     ) throws IOException {
-        this.securityService = securityService;
         this.eventService = eventService;
         this.navView = new NavView(securityService);
         addClassName("event-main-view");
@@ -51,15 +49,13 @@ public class EventMainView extends VerticalLayout {
         add(getContent());
     }
 
-//    public void logoutRedirect() throws IOException {
-//        if (securityService.getAuthenticatedUser() == null)
-//            VaadinServletResponse.getCurrent().sendRedirect("/login");
-//    }
-
-
     private void configureEventDetailsView() {
-        eventList.addListener(EventListView.AddNewEvent.class, event -> openEventDetailsView(new Event()));
-        eventList.addListener(EventListView.SelectedEvent.class, event -> openEventDetailsView(event.getEvent()));
+        eventList.addListener(EventListView.AddNewEvent.class, event -> {
+            System.out.println("Add Event has been clicked"); openEventDetailsView(new Event());
+        });
+        eventList.addListener(EventListView.SelectedEvent.class, event -> {
+            System.out.println("Selected Event has been clicked"); openEventDetailsView(event.getEvent());
+        });
         eventDetailsView.setSizeFull();
         eventDetailsView.addListener(EventDetailsView.SaveEvent.class,this::saveEvent);
         eventDetailsView.addListener(EventDetailsView.DeleteEvent.class, this::deleteEvent);
@@ -95,7 +91,7 @@ public class EventMainView extends VerticalLayout {
 
     public void openEventDetailsView(Event event){
         eventDetailsView.setEvent(event);
-        if(Optional.ofNullable(event.getEventName()).orElse("").equals(""))
+        if(Optional.ofNullable(event.getEventName()).orElse("").isEmpty())
             eventDetailsView.setFields(true);
         eventList.setWidth("25%");
         eventDetailsView.setVisible(true);

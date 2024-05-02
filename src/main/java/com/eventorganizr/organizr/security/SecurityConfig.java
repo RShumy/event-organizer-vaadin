@@ -67,12 +67,9 @@ public class SecurityConfig
                 .and()
                 .headers(headers -> headers.frameOptions().sameOrigin())
                 .userDetailsService(userDetailsService)
-//                .formLogin().loginPage("/login").permitAll()
-//                .and()
                 .logout((logout) ->
                         logout.deleteCookies("JSESSIONID")
                                 .invalidateHttpSession(true)
-//                                .logoutUrl("/logout")
                                 .clearAuthentication(true));
         super.configure(httpSecurity);
         setLoginView(httpSecurity, LogInView.class);

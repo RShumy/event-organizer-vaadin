@@ -134,38 +134,4 @@ public class EventListView extends VerticalLayout {
     }
 
 
-    //    public void configureEventList() {
-//        eventListBox.addClassName("event-list-box");
-//        eventListBox.setSizeFull();
-//        setSpacing(false);
-//        setPadding(false);
-//        eventListBox.addValueChangeListener(event -> {
-//            this.selectedEvent = event;
-//            eventDetailsView.setEvent(event.getValue());
-//        });
-//
-//        eventListBox.setRenderer(createEventRenderer(getDateTimeFormatter()));
-//    }
-
-    //    private static ComponentRenderer<Component, Event> createEventRenderer(DateTimeFormatter formatter){
-//        return new ComponentRenderer<Component, Event>(event -> {
-//            HorizontalLayout row = new HorizontalLayout();
-//            row.setClassName("event-list-row");
-//            row.setAlignItems(FlexComponent.Alignment.CENTER);
-//            Span eventName = new Span(event.getEventName());
-//            Span beginDate = new Span("Starts: " + event.getEventBeginDate().format(formatter));
-//            Span endDate = new Span("Ends: " + event.getEventEndDate().format(formatter));
-//            eventName.getStyle().set("font-size", "150%");
-//            beginDate.getStyle()
-//                    .set("color", "dodgerblue")
-//                    .set("font-size", "75%");
-//            endDate.getStyle()
-//                    .set("color", "dodgerblue")
-//                    .set("font-size", "75%");
-//            VerticalLayout col = new VerticalLayout(eventName,beginDate,endDate);
-//            col.setSpacing(false);
-//            col.setPadding(false);
-//            row.add(col);
-//            return row;});
-//    }
 }

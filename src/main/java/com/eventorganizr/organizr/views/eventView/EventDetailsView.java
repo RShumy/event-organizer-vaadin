@@ -18,7 +18,9 @@ import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.shared.Registration;
+import lombok.Getter;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 public class EventDetailsView extends VerticalLayout {
@@ -92,9 +94,10 @@ public class EventDetailsView extends VerticalLayout {
                     try {
                         field.setAccessible(true);
                         if(Optional.ofNullable(field.get(this)).isEmpty())
-                            field.set(this,field.getType().newInstance());
+                            field.set(this,field.getType().getDeclaredConstructor().newInstance());
                         return field.get(this);
-                    } catch (IllegalAccessException | InstantiationException e) {
+                    } catch (IllegalAccessException | InstantiationException |
+                             InvocationTargetException | NoSuchMethodException e) {
                         throw new RuntimeException(e);
                     }
                 })
@@ -155,9 +158,11 @@ public class EventDetailsView extends VerticalLayout {
         this.event = event;
         binder.readBean(event);
         setFields(false);
-        mapView.showMap(locationQueryString.getValue());
+        System.out.println("Location in Java" + locationQueryString.getValue());
+        MapView.showMap(locationQueryString.getValue());
     }
 
+    @Getter
     public static abstract class DetailsViewEvent extends ComponentEvent<EventDetailsView>{
 
         private final Event event;
@@ -173,10 +178,6 @@ public class EventDetailsView extends VerticalLayout {
         protected DetailsViewEvent(EventDetailsView source, Event event) {
             super(source, false);
             this.event = event;
-        }
-
-        public Event getEvent() {
-            return event;
         }
 
     }

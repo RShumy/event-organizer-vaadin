@@ -58,5 +58,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+## VAADIN ###
+**/theme-general.generated.js
+**/vite.generated.ts
+
 ### VS Code ###
 .vscode/
