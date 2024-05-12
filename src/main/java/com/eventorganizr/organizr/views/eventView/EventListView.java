@@ -8,7 +8,6 @@ import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.ComponentEventListener;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.grid.ItemClickEvent;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -16,6 +15,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.renderer.LitRenderer;
 import com.vaadin.flow.data.renderer.Renderer;
 import com.vaadin.flow.shared.Registration;
+import lombok.Getter;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
@@ -101,18 +101,13 @@ public class EventListView extends VerticalLayout {
         return DateTimeFormatter.ofPattern("dd-MMM-yyyy 'at' HH:mm");
     }
 
-    public Grid<Event> getEventGrid() { return eventGrid; }
-
+    @Getter
     public static abstract class ListViewEvent extends ComponentEvent<EventListView> {
         private final Event event;
 
         protected ListViewEvent(EventListView source, Event event) {
             super(source, false);
             this.event = event;
-        }
-
-        public Event getEvent() {
-            return event;
         }
     }
 
