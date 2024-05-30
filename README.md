@@ -1,8 +1,10 @@
 ﻿## Event Organizer WIP (Spring Boot - backend, Vaadin - frontend)
+## Multi-Module project branch
 **NOTE** : Vaadin has issues with newer npm versions <br>
 _Consider rolling back npm cli version to 8.5.5 or 8.19.2_ . <br>
 You can run `npm install -g npm@8.5.5`
-### Back End (Controlers included for Vaadin WebClient(not created yet)) 
+
+### Back End (Controllers included for Vaadin WebClient(not created yet)) 
 #### Simple Event Organizer WebApp. 
 Models:
 - 4 Base Entity Clases:
@@ -34,7 +36,7 @@ Models:
 ### TO DO:
 	- Create EventConsumables list view, selection functionalities and adding to participants
 	- Create Participant list view and it's respective Consumables, add/delete consumable functionalities
-	- Implement Vaadin WebClient
+	- Implement Spring WebClient
 	- Create Custom Log-in Page
 	- Create Registration Form
 	- Implement Method access restricitons

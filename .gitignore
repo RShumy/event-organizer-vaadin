@@ -1,7 +1,8 @@
 node_modules
 HELP.md
 target/
-frontend/API-key.ts
+web/frontend/API-key.ts
+node_modules
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
