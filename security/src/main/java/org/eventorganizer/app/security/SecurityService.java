@@ -1,4 +1,4 @@
-package org.eventorganizer.app.securtiy;
+package org.eventorganizer.app.security;
 
 import com.vaadin.flow.server.VaadinServletRequest;
 import com.vaadin.flow.server.VaadinServletResponse;

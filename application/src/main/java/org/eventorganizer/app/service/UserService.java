@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.Optional.ofNullable;
+
 @Service
 public class UserService {
 
@@ -81,7 +83,7 @@ public class UserService {
                 value.addAuthority(authority);
             }
             return (ServiceHolder<B, U>) this;
-        };
+        }
 
         public void create(){
             service.saveUser(this.value);
@@ -100,10 +102,18 @@ public class UserService {
     //Password is saved only at registration if the UserName is not found in the Data Base
     public void updateUser(Long id, User user){
         User userToUpdate = findUser(id);
-        userToUpdate.setUserName(user.getUserName());
-        userToUpdate.setFirstName(user.getFirstName());
-        userToUpdate.setLastName(user.getLastName());
-        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setUserName(
+                ofNullable(user.getUserName()).orElse(userToUpdate.getUserName())
+        );
+        userToUpdate.setFirstName(
+                ofNullable(user.getFirstName()).orElse(userToUpdate.getFirstName())
+        );
+        userToUpdate.setLastName(
+                ofNullable(user.getLastName()).orElse(userToUpdate.getLastName())
+        );
+        userToUpdate.setEmail(
+                ofNullable(user.getEmail()).orElse(userToUpdate.getEmail())
+        );
 
         userRepository.save(userToUpdate);
     }

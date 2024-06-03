@@ -1,15 +1,15 @@
-package org.eventorganizer.app.securtiy;
+package org.eventorganizer.app.security;
 
 import com.vaadin.flow.spring.security.VaadinWebSecurity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -61,15 +61,24 @@ public class SecurityConfig extends VaadinWebSecurity{
     @Override
     public void configure(HttpSecurity httpSecurity) throws Exception{
         httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
                 .httpBasic()
                 .and()
                 .headers(headers -> headers.frameOptions().sameOrigin())
+                .authorizeRequests()
+                    .antMatchers(HttpMethod.GET, "/api/**").authenticated()
+                    .antMatchers(HttpMethod.POST, "/api/**").authenticated()
+                    .antMatchers(HttpMethod.PUT, "/api/**").authenticated()
+                    .antMatchers(HttpMethod.DELETE, "/api/**").authenticated()
+                .and()
                 .userDetailsService(userDetailsService)
                 .logout((logout) ->
                         logout.deleteCookies("JSESSIONID")
                                 .invalidateHttpSession(true)
-                                .clearAuthentication(true));
+                                .clearAuthentication(true))
+                // ignoring CSRF for api requests until implementation of a solution that
+                // will capture the content attribute of meta tags with names ("_csrf_header","_csrf")
+                // from the body response sent by Vaadin after successful login
+                .csrf().ignoringAntMatchers("/api/**");
         super.configure(httpSecurity);
         setLoginView(httpSecurity, "login");
     }

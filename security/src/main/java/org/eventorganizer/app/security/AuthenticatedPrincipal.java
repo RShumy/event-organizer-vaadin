@@ -1,4 +1,4 @@
-package org.eventorganizer.app.securtiy;
+package org.eventorganizer.app.security;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 

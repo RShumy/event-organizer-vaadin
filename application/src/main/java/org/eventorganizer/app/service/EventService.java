@@ -1,5 +1,6 @@
 package org.eventorganizer.app.service;
 
+
 import org.eventorganizer.app.entity.Consumable;
 import org.eventorganizer.app.entity.Event;
 import org.eventorganizer.app.exception.RecordNotFoundException;

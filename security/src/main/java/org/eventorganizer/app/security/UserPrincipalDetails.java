@@ -1,4 +1,4 @@
-package org.eventorganizer.app.securtiy;
+package org.eventorganizer.app.security;
 
 import org.eventorganizer.app.entity.User;
 import org.springframework.security.core.GrantedAuthority;

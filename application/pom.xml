@@ -15,7 +15,7 @@
 <!--    Internal Application Dependencies    -->
         <dependency>
             <groupId>org.eventorganizer.app</groupId>
-            <artifactId>persistence</artifactId>
+            <artifactId>model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 <!--    Spring    -->
@@ -28,7 +28,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

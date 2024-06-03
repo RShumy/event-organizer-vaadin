@@ -1,7 +1,7 @@
 package org.eventorganizer.app.views.eventView;
 
 import org.eventorganizer.app.entity.Event;
-import org.eventorganizer.app.securtiy.SecurityService;
+import org.eventorganizer.app.security.SecurityService;
 import org.eventorganizer.app.service.EventService;
 import org.eventorganizer.app.views.MainPage;
 import org.eventorganizer.app.views.navView.NavView;

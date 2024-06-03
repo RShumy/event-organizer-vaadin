@@ -1,6 +1,6 @@
 package org.eventorganizer.app.views.navView;
 
-import org.eventorganizer.app.securtiy.SecurityService;
+import org.eventorganizer.app.security.SecurityService;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
