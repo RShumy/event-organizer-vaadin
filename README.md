@@ -2,9 +2,20 @@
 ## Multi-Module project branch
 **NOTE** : Vaadin has issues with newer npm versions <br>
 _Consider rolling back npm cli version to 8.5.5 or 8.19.2_ . <br>
-You can run `npm install -g npm@8.5.5`
+You can run `npm install -g npm@8.5.5` <br>
+<br>
+**NOTE** : <strong> Before running the application make sure to run <br>
+`mvn dependency:copy-dependencies` <br>
+`mvn clean install` <br> 
+Excluded Vaadin generated files with maven goals <br>
+ > vaadin:prepare-frontend <br>
+ > vaadin:build-fronted <br> 
 
-### Back End (Controllers included for Vaadin WebClient(not created yet)) 
+Issue fixed by this: <br> 
+When the project was freshly cloned with these files included <br> 
+Vaadin would generate them in the root folder and not in the proper module folder</strong>
+
+### Back End (Controllers included for Spring WebClient(not created yet)) 
 #### Simple Event Organizer WebApp. 
 Models:
 - 4 Base Entity Clases:

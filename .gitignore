@@ -1,8 +1,9 @@
-node_modules
+
 HELP.md
 target/
-web/frontend/API-key.ts
-node_modules
+
+**/frontend/API-key.ts
+
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
@@ -59,9 +60,17 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+## Node ##
+node_modules
+**/package.json
+**/package-lock.json
+
 ## VAADIN ###
 **/theme-general.generated.js
 **/vite.generated.ts
+**/ts-config.json
+**/types.d.ts
+**/vite.**
 
 ### VS Code ###
 .vscode/

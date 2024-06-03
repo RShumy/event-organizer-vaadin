@@ -46,8 +46,8 @@
                 <configuration>
                     <npmFolder>${project.basedir}</npmFolder>
                     <productionMode>true</productionMode>
-                    <generatedTsFolder>frontend</generatedTsFolder>
-                    <frontendDirectory>frontend</frontendDirectory>
+                    <generatedTsFolder>${project.basedir}/frontend</generatedTsFolder>
+                    <frontendDirectory>${project.basedir}/frontend</frontendDirectory>
                 </configuration>
                 <executions>
                     <execution>
