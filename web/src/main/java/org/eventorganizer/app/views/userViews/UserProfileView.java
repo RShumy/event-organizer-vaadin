@@ -1,4 +1,4 @@
-package org.eventorganizer.app.views.userview;
+package org.eventorganizer.app.views.userViews;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 

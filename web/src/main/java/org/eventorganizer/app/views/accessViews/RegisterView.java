@@ -1,4 +1,4 @@
-package org.eventorganizer.app.accessViews;
+package org.eventorganizer.app.views.accessViews;
 
 import org.eventorganizer.app.entity.User;
 //Todo: remove dependency of application module and replace with spring webclient

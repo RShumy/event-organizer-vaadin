@@ -1,4 +1,4 @@
-package org.eventorganizer.app.views.eventView;
+package org.eventorganizer.app.views.eventViews;
 
 
 import org.eventorganizer.app.entity.Event;
@@ -25,12 +25,10 @@ public class EventListView extends VerticalLayout {
     Grid<Event> eventGrid = new Grid<>(Event.class, false);
 
     public EventListView(List<Event> events){
-//        this.events = events;
 
         addClassName("event-list");
         setSizeFull();
 
-//        configureEventList();
         configureEventGrid();
 
         updateEvents(events);
@@ -44,7 +42,6 @@ public class EventListView extends VerticalLayout {
 
     protected void updateEvents(List<Event> events) {
         eventGrid.setItems(events);
-//        eventListBox.setItems(events);
     }
 
     private void configureEventGrid() {

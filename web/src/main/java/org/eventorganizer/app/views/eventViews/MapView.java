@@ -1,4 +1,4 @@
-package org.eventorganizer.app.views.eventView;
+package org.eventorganizer.app.views.eventViews;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.dependency.JsModule;
