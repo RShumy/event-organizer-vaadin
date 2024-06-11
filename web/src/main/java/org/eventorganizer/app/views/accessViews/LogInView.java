@@ -1,4 +1,4 @@
-package org.eventorganizer.app.accessViews;
+package org.eventorganizer.app.views.accessViews;
 
 import org.eventorganizer.app.service.UserService;
 import com.vaadin.flow.component.UI;

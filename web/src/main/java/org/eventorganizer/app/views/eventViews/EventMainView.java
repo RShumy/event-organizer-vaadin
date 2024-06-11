@@ -1,4 +1,4 @@
-package org.eventorganizer.app.views.eventView;
+package org.eventorganizer.app.views.eventViews;
 
 import org.eventorganizer.app.entity.Event;
 import org.eventorganizer.app.security.SecurityService;
@@ -9,6 +9,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import org.eventorganizer.app.webClient.EventWebClient;
 
 import javax.annotation.security.PermitAll;
 import java.util.Optional;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class EventMainView extends VerticalLayout {
 
     private final EventService eventService;
+    private final EventWebClient eventWebClient;
 
     private final EventListView eventListView = new EventListView();
 
@@ -32,12 +34,14 @@ public class EventMainView extends VerticalLayout {
 
 
     public EventMainView(EventService eventService,
+                         EventWebClient eventWebClient,
                          SecurityService securityService) {
         this.eventService = eventService;
+        this.eventWebClient = eventWebClient;
         this.navView = new NavView(securityService);
         addClassName("event-main-view");
 
-        updateEvents();
+        updateEventList();
 
         setSizeFull();
 
@@ -59,15 +63,15 @@ public class EventMainView extends VerticalLayout {
 
     private void deleteEvent(EventDetailsView.DeleteEvent event) {
         eventService.delete(event.getEvent().getEventId());
-        updateEvents();
+        updateEventList();
     }
 
     private void saveEvent(EventDetailsView.SaveEvent event) {
         if (Optional.ofNullable(event.getEvent().getEventId()).isPresent()) {
-            eventService.updateEvent(event.getEvent().getEventId(), event.getEvent());
+            eventWebClient.updateEvent(event.getEvent().getEventId(), event.getEvent());
         }
-        else eventService.saveEvent(event.getEvent());
-        updateEvents();
+        else eventWebClient.saveEvent(event.getEvent());
+        updateEventList();
     }
 
 
@@ -88,7 +92,7 @@ public class EventMainView extends VerticalLayout {
     public void openEventDetailsView(Event event){
         eventDetailsView.setEvent(event);
         if(Optional.ofNullable(event.getEventName()).orElse("").isEmpty())
-            eventDetailsView.setFields(true);
+            eventDetailsView.enableFields(true);
         eventListView.setWidth("25%");
         eventDetailsView.setVisible(true);
     }
@@ -98,8 +102,8 @@ public class EventMainView extends VerticalLayout {
         eventListAndDetailView.setFlexGrow(0,eventDetailsView);
     }
 
-    private void updateEvents() {
-        eventListView.updateEvents(eventService.getEvents());
+    private void updateEventList() {
+        eventListView.updateEvents(eventWebClient.getAllEvents());
     }
 
 
