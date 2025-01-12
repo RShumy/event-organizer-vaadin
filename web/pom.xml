@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>web</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -50,6 +51,14 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
+                <configuration>
+                    <mainClass>org.eventorganizer.app.OrganizerApplication</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-maven-plugin</artifactId>
