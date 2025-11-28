@@ -1,9 +1,4 @@
-//Bing Sign up and Generate an API Key: https://www.bingmapsportal.com/
-
-// Create file API-key.ts here in frontend folder with the uncommented lines below:
-// const APIkey: string = "The-Bing-Maps-APIkey";
-// export default APIkey;
-
+// Making transition to a Free Map library
 
 import MaplibreGeocoder, {
     MaplibreGeocoderApi,
@@ -28,11 +23,17 @@ declare global { interface Window {GetMap : any, ShowMap : any }}
 var map : Map;
 var locationString : string;
 
+var Geo: MaplibreGeocoderApi;
+var Config : MaplibreGeocoderApiConfig = {}
+var Options : MaplibreGeocoderOptions = {
+    maplibregl: MaplibreGl
+}
+
 window.GetMap = async function getMap() {
 
     // @ts-ignore
     map = new Map({
-            container: 'map',
+            container: 'myMap',
             // Use a minimalist raster style
             style: 'https://tiles.openfreemap.org/styles/bright',
             center: [-87.61694, 41.86625],
@@ -42,11 +43,12 @@ window.GetMap = async function getMap() {
             canvasContextAttributes: {antialias: true}
     });
     console.log(locationString + '  --- PROPERTY NULL ??? ----');
-
     //Make a request to geocoder
-    let Geo: MaplibreGeocoderApi;
-    var Config : MaplibreGeocoderApiConfig = { query:locationString }
+    geocodeRequest(locationString);
+}
 
+function geocodeRequest(location?: string) {
+    Config.query = location;
     Geo = { async forwardGeocode(config):Promise<MaplibreGeocoderFeatureResults> {
             var FeatureResults: MaplibreGeocoderFeatureResults = {features: [], type: "FeatureCollection"};
             try {
@@ -83,12 +85,9 @@ window.GetMap = async function getMap() {
                 features: FeatureResults.features, type: "FeatureCollection"
             };
         }
-
     };
-    var Options : MaplibreGeocoderOptions = {
-        maplibregl: MaplibreGl
-    }
-    const Geocoder= new MaplibreGeocoder(Geo, Options);
+    var Geocoder = new MaplibreGeocoder(Geo, Options);
+    Geo.forwardGeocode(Config);
 }
 
 window.ShowMap = function showMap(location: string){
@@ -101,7 +100,7 @@ window.ShowMap = function showMap(location: string){
         locationString = location;
         var script = document.createElement("script");
         script.className = "map-per-request";
-        script.type = "text/javascript";
+        script.type = "text/typescript";
         script.async = true;
         script.defer = true;
         script.src = '';

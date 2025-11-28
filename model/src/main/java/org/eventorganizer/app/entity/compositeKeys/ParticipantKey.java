@@ -1,7 +1,6 @@
 package org.eventorganizer.app.entity.compositeKeys;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 //Used to Create Lookup table

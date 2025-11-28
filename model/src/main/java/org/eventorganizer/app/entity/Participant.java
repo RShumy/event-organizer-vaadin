@@ -3,9 +3,9 @@ package org.eventorganizer.app.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import org.eventorganizer.app.entity.compositeKeys.ParticipantKey;
 
-import javax.persistence.*;
 import java.util.Set;
 
 @Entity

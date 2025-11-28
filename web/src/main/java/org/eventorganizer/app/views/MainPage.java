@@ -3,7 +3,7 @@ package org.eventorganizer.app.views;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.router.PageTitle;
 
-import javax.annotation.security.PermitAll;
+import jakarta.annotation.security.PermitAll;
 
 @PermitAll
 @PageTitle("Main Page")

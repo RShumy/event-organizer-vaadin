@@ -1,6 +1,6 @@
 package org.eventorganizer.app.webClient;
 
-import com.vaadin.flow.spring.SpringVaadinSession;
+import com.vaadin.flow.server.VaadinSession;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -9,8 +9,8 @@ public class SessionIDResolver {
     private static String JSESSION = "JSESSIONID=";
 
     public String sessionId(){
-        if(SpringVaadinSession.getCurrent() == null)
+        if(VaadinSession.getCurrent() == null)
             return "";
-        return JSESSION + SpringVaadinSession.getCurrent().getSession().getId();
+        return JSESSION + VaadinSession.getCurrent().getSession().getId();
     }
 }
