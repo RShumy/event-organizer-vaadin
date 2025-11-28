@@ -4,11 +4,20 @@
 // const APIkey: string = "The-Bing-Maps-APIkey";
 // export default APIkey;
 
-import APIkey from "./API-key";
-// @ts-ignore
-import SearchManager = Microsoft.Maps.Search.SearchManager;
-declare global { interface Window {GetMap : any, ShowMap : any }}
 
+import MaplibreGeocoder, {
+    MaplibreGeocoderApi,
+    MaplibreGeocoderApiConfig,
+    CarmenGeojsonFeature,
+    MaplibreGeocoderFeatureResults,
+    MaplibreGeocoderPlaceResults,
+    MaplibreGeocoderOptions
+} from '@maplibre/maplibre-gl-geocoder';
+import MaplibreGl, {FlyToOptions, Marker, Popup, MarkerOptions, Map, GeoJSONFeature} from 'maplibre-gl';
+import '@maplibre/maplibre-gl-geocoder/dist/maplibre-gl-geocoder.css';
+import 'maplibre-gl/dist/maplibre-gl.css';
+
+declare global { interface Window {GetMap : any, ShowMap : any }}
 
 // import {waitUntil} from "workbox-core/_private";
 
@@ -16,67 +25,70 @@ declare global { interface Window {GetMap : any, ShowMap : any }}
 // var mapsApiUrl = "https://www.bing.com/api/maps/mapcontrol?callback=GetMap";
 // var locationString;
 // @ts-ignore
-var map : Microsoft.Maps.Map, searchManager : SearchManager;
-var mapsApiUrl : string = "https://www.bing.com/api/maps/mapcontrol?callback=GetMap";
+var map : Map;
 var locationString : string;
 
 window.GetMap = async function getMap() {
 
-
     // @ts-ignore
-    map = await new Microsoft.Maps.Map(document.getElementById('myMap'),
-        { credentials: APIkey } );
+    map = new Map({
+            container: 'map',
+            // Use a minimalist raster style
+            style: 'https://tiles.openfreemap.org/styles/bright',
+            center: [-87.61694, 41.86625],
+            zoom: 15.99,
+            pitch: 40,
+            bearing: 20,
+            canvasContextAttributes: {antialias: true}
+    });
     console.log(locationString + '  --- PROPERTY NULL ??? ----');
 
-    //Make a request to geocode
-    await geocodeQuery(locationString);
-}
+    //Make a request to geocoder
+    let Geo: MaplibreGeocoderApi;
+    var Config : MaplibreGeocoderApiConfig = { query:locationString }
 
-function geocodeQuery(query : string) {
-    //If search manager is not defined, load the search module.
-    if (!searchManager) {
-        //Create an instance of the search manager and call the geocodeQuery function again.
-        // @ts-ignore
-        Microsoft.Maps.loadModule('Microsoft.Maps.Search', async function () {
-            // @ts-ignore
-            searchManager = new Microsoft.Maps.Search.SearchManager(map);
-            geocodeQuery(query);
-        });
-    }
-    if (query == null || query.trim() == "") {
-            console.log("QUERY IS NULL OR EMPTY : " + query + " :")
-            map.entities.clear();
-            map.setView(
-                {
-                // @ts-ignore
-                center: new Microsoft.Maps.Location(0, 0),
-                zoom: 1
+    Geo = { async forwardGeocode(config):Promise<MaplibreGeocoderFeatureResults> {
+            var FeatureResults: MaplibreGeocoderFeatureResults = {features: [], type: "FeatureCollection"};
+            try {
+                const request =
+                    `https://nominatim.openstreetmap.org/search?q=${config.query}&format=geojson&polygon_geojson=1&addressdetails=1`;
+                const response: Response = await fetch(request);
+                const geojson = await response.json();
+                for (const feature of geojson.features) {
+                    const center: [number, number] = [
+                        feature.bbox[0] +
+                        (feature.bbox[2] - feature.bbox[0]) / 2,
+                        feature.bbox[1] +
+                        (feature.bbox[3] - feature.bbox[1]) / 2
+                    ];
+                    const point: CarmenGeojsonFeature = {
+                        id: feature.id,
+                        type: 'Feature',
+                        geometry: {
+                            type: 'Point',
+                            coordinates: center
+                        },
+                        place_name: feature.properties.display_name,
+                        properties: feature.properties,
+                        text: feature.properties.display_name,
+                        place_type: ['place'],
+                        bbox: [center[0], center[1], 0, 0],
+                    };
+                    FeatureResults.features.push(point);
                 }
-            )
-    }
-    else {
-        var searchRequest = {
-            where: query,
-            callback: function (r? : any) {
-                //Add the first result to the map and zoom into it.
-                if (r && r.results && r.results.length > 0) {
-                    // @ts-ignore
-                    var pin = new Microsoft.Maps.Pushpin(r.results[0].location);
-                    map.entities.push(pin);
-
-                    map.setView({ bounds: r.results[0].bestView });
-                }
-            },
-            errorCallback: function (e : any) {
-                //If there is an error, alert the user about it.
-                alert("No results found.");
+            } catch (e) {
+                console.error(`Failed to forwardGeocode with error: ${e}`);
             }
-        };
+            return {
+                features: FeatureResults.features, type: "FeatureCollection"
+            };
+        }
 
-        //Make the geocode request.
-        searchManager.geocode(searchRequest);
-        // window.addEventListener("load", function () {  });
+    };
+    var Options : MaplibreGeocoderOptions = {
+        maplibregl: MaplibreGl
     }
+    const Geocoder= new MaplibreGeocoder(Geo, Options);
 }
 
 window.ShowMap = function showMap(location: string){
@@ -92,13 +104,13 @@ window.ShowMap = function showMap(location: string){
         script.type = "text/javascript";
         script.async = true;
         script.defer = true;
-        script.src = mapsApiUrl;
+        script.src = '';
 
         script.onload = window.GetMap;
 
         head.appendChild(script);
     }
-    else geocodeQuery(location)
+    else (location)
     var cross_origin_scripts = document.querySelectorAll("script[crossorigin=\"anonymus\"]");
     cross_origin_scripts.forEach(sc => {if(sc.parentElement!=null) sc.parentElement.removeChild(sc)});
 }
