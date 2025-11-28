@@ -1,6 +1,6 @@
 package org.eventorganizer.app.entity.compositeKeys;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public record EventConsumablesKey(@NotNull Long eventId, @NotNull Long consumableId) implements Serializable {

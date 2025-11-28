@@ -1,10 +1,15 @@
 package org.eventorganizer.app.views.navView;
 
-import org.eventorganizer.app.security.SecurityService;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.server.VaadinRequest;
+import com.vaadin.flow.server.VaadinResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.eventorganizer.app.security.SecurityService;
 
 import java.io.IOException;
 
@@ -16,7 +21,12 @@ public class NavView  extends HorizontalLayout {
             e -> {
                 System.out.println("SHOULD LOG OUT !!!!!!");
                 try {
-                    securityService.logout();
+                    HttpServletRequest request =
+                            (HttpServletRequest) VaadinRequest.getCurrent();
+                    HttpServletResponse response =
+                            (HttpServletResponse) VaadinResponse.getCurrent();
+                    securityService.logout(request, response);
+                    UI.getCurrent().getPage().setLocation("/login");
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }

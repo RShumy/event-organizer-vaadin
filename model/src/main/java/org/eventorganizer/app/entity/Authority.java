@@ -1,9 +1,8 @@
 package org.eventorganizer.app.entity;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "authorities")

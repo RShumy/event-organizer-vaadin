@@ -11,7 +11,7 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import org.eventorganizer.app.webClient.EventWebClient;
 
-import javax.annotation.security.PermitAll;
+import jakarta.annotation.security.PermitAll;
 import java.util.Optional;
 
 @PermitAll

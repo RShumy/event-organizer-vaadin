@@ -3,7 +3,7 @@ package org.eventorganizer.app.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.eventorganizer.app.entity.compositeKeys.ParticipantConsumablesKey;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "participant_consumables")
