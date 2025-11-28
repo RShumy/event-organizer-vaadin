@@ -62,7 +62,6 @@ build/
 
 ## Node ##
 node_modules
-**/package.json
 **/package-lock.json
 
 ## VAADIN ###
@@ -70,7 +69,9 @@ node_modules
 **/vite.generated.ts
 **/ts-config.json
 **/types.d.ts
-**/vite.**
-
+**/vite-**
+**/generated-**
+**/frontend/generated/index**
+**/frontend/generated/vaadin**
 ### VS Code ###
 .vscode/
