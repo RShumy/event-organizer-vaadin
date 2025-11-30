@@ -65,10 +65,9 @@
                 <artifactId>vaadin-maven-plugin</artifactId>
                 <version>${vaadin.version}</version>
                 <configuration>
-<!--                    <npmFolder>${project.basedir}</npmFolder>-->
-                    <productionMode>true</productionMode>
-<!--                    <generatedTsFolder>${project.basedir}/frontend</generatedTsFolder>-->
-<!--                    <frontendDirectory>${project.basedir}/frontend</frontendDirectory>-->
+                    <npmFolder>${project.basedir}</npmFolder>
+                    <generatedTsFolder>${project.basedir}/frontend</generatedTsFolder>
+                    <frontendDirectory>${project.basedir}/frontend</frontendDirectory>
                 </configuration>
                 <executions>
                     <execution>

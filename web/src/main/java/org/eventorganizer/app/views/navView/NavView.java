@@ -10,8 +10,11 @@ import com.vaadin.flow.server.VaadinResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.eventorganizer.app.security.SecurityService;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.IOException;
+
+import static java.util.Objects.isNull;
 
 public class NavView  extends HorizontalLayout {
 
@@ -20,18 +23,22 @@ public class NavView  extends HorizontalLayout {
     Button logout = new Button("Log out",
             e -> {
                 System.out.println("SHOULD LOG OUT !!!!!!");
-                try {
-                    HttpServletRequest request =
-                            (HttpServletRequest) VaadinRequest.getCurrent();
-                    HttpServletResponse response =
-                            (HttpServletResponse) VaadinResponse.getCurrent();
-                    securityService.logout(request, response);
-                    UI.getCurrent().getPage().setLocation("/login");
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
+                logout();
             }
     );
+
+    private void logout(){
+        try {
+            HttpServletRequest request =
+                    (HttpServletRequest) VaadinRequest.getCurrent();
+            HttpServletResponse response =
+                    (HttpServletResponse) VaadinResponse.getCurrent();
+            securityService.logout(request, response);
+            UI.getCurrent().getPage().setLocation("/login");
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
     Div userDiv = new Div();
 
@@ -40,9 +47,11 @@ public class NavView  extends HorizontalLayout {
         setWidth(100, Unit.PERCENTAGE);
         userDiv.setSizeFull();
         try {
+            UserDetails userDetails = securityService.getAuthenticatedUser();
+            if ( isNull(userDetails) ) logout();
             userDiv.setText("Hello " +
-                       securityService.getAuthenticatedUser().getUsername()
-                    );
+                    securityService.getAuthenticatedUser().getUsername()
+            );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

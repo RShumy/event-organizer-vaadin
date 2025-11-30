@@ -43,14 +43,46 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf
-                        .ignoringRequestMatchers("/api/**") // Spring Security 6 syntax
+                        .ignoringRequestMatchers(
+                                // Vaadin internal framework endpoints
+                                "/?v-r=init**",
+                                "/*",
+                                "/VAADIN/**",
+                                "/UIDL/**",
+                                "/HEARTBEAT/**",
+                                "/@flow/**",
+                                "/@vite/**",
+                                "/frontend/**",
+                                "/offline-stub.html"
+                        )
                 )
                 .authorizeHttpRequests(auth -> auth
-                        // Allow H2 console
-                        .requestMatchers("/h2/**").permitAll()
-
-                        // Public resources
-                        .requestMatchers("/VAADIN/**", "/favicon.ico", "/images/**").permitAll()
+                        .requestMatchers(
+                            // Apparently in Vaadin 24 will break without permitting the root "/*"
+                            // what an abomination
+                                "/*",
+                                "/?v-r=init**",
+                                "/?v-r=uidl**",
+                                "/login",
+                                "/VAADIN/**",
+                                "/VAADIN/@vite/**",
+                                "/VAADIN/@fs/**",
+                                "/VAADIN/build/**",
+                                "/VAADIN/push/**",
+                                "/VAADIN/generated/**",
+                                "/VAADIN/themes/**",
+                                "/icons/**",
+                                "/@vite/**",
+                                "/frontend/**",
+                                "/manifest.webmanifest",
+                                "/sw.js",
+                                "/offline.html",
+                                "/index.html",
+                                "/@flow/**",
+                                "/offline-stub.html",
+                                "/h2/**"
+                                )
+                        .permitAll()
 
                         // API (authenticated)
                         .requestMatchers(HttpMethod.GET, "/api/**").authenticated()
@@ -73,11 +105,6 @@ public class SecurityConfig {
                 ).formLogin(form -> form
                         .loginPage("/login")
                         .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/login")
-                        .deleteCookies("JSESSIONID")
-                        .invalidateHttpSession(true)
                 );
 
         return http.build();
