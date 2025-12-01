@@ -53,7 +53,8 @@ public class SecurityConfig {
                                 "/@flow/**",
                                 "/@vite/**",
                                 "/frontend/**",
-                                "/offline-stub.html"
+                                "/offline-stub.html",
+                                "/api/**"
                         )
                 )
                 .authorizeHttpRequests(auth -> auth
