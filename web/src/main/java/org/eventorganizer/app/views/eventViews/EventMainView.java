@@ -1,17 +1,16 @@
 package org.eventorganizer.app.views.eventViews;
 
-import org.eventorganizer.app.entity.Event;
-import org.eventorganizer.app.security.SecurityService;
-import org.eventorganizer.app.service.EventService;
-import org.eventorganizer.app.views.MainPage;
-import org.eventorganizer.app.views.navView.NavView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import jakarta.annotation.security.PermitAll;
+import org.eventorganizer.app.entity.Event;
+import org.eventorganizer.app.service.EventService;
+import org.eventorganizer.app.views.MainPage;
+import org.eventorganizer.app.views.navView.NavView;
 import org.eventorganizer.app.webClient.EventWebClient;
 
-import jakarta.annotation.security.PermitAll;
 import java.util.Optional;
 
 @PermitAll
@@ -34,11 +33,11 @@ public class EventMainView extends VerticalLayout {
 
 
     public EventMainView(EventService eventService,
-                         EventWebClient eventWebClient,
-                         SecurityService securityService) {
+                         EventWebClient eventWebClient
+    ) {
         this.eventService = eventService;
         this.eventWebClient = eventWebClient;
-        this.navView = new NavView(securityService);
+        this.navView = new NavView();
         addClassName("event-main-view");
 
         updateEventList();
