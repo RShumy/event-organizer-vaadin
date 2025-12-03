@@ -117,14 +117,12 @@
 
 import maplibregl, { Map } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-
 import MaplibreGeocoder, {
     CarmenGeojsonFeature,
     MaplibreGeocoderApi,
     MaplibreGeocoderFeatureResults,
     MaplibreGeocoderOptions
 } from "@maplibre/maplibre-gl-geocoder";
-
 import "@maplibre/maplibre-gl-geocoder/dist/maplibre-gl-geocoder.css";
 
 declare global {
@@ -175,7 +173,7 @@ function initMap(location: string) {
     if (!map) {
         map = new maplibregl.Map({
             container: "myMap",
-            style: "https://tiles.openfreemap.org/styles/bright",
+            style: "mapstyle/libertydark",
             center: [0, 0],
             zoom: 3
         });
