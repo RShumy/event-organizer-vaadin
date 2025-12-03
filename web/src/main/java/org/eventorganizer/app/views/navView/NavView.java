@@ -42,15 +42,14 @@ public class NavView  extends HorizontalLayout {
 
     Div userDiv = new Div();
 
-    public NavView(SecurityService securityService){
-        this.securityService = securityService;
+    public NavView(){
         setWidth(100, Unit.PERCENTAGE);
         userDiv.setSizeFull();
         try {
-            UserDetails userDetails = securityService.getAuthenticatedUser();
+            UserDetails userDetails = SecurityService.getAuthenticatedUser();
             if ( isNull(userDetails) ) logout();
             userDiv.setText("Hello " +
-                    securityService.getAuthenticatedUser().getUsername()
+                    SecurityService.getAuthenticatedUser().getUsername()
             );
         } catch (IOException e) {
             throw new RuntimeException(e);
